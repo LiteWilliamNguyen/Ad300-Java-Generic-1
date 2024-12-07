@@ -18,12 +18,34 @@ public class Main {
         Processor<String> stringProcessor = new StringProcessor();
         String reveredString = stringProcessor.process("Generics String");
         System.out.println("Reversed String of " + "Generic String: "+ reveredString);
+
+        //Method for Wildcards
+        Box<Integer> intBox = new Box<>();
+        intBox.set(123);
+        Box<Double> doubleBox = new Box<>();
+        doubleBox.set(45.67);
+
+        printBox(intBox);
+        printBox(doubleBox);
+
+
+
+        //For Library
+        Library<String> bookLibrary = new Library<>();
+        bookLibrary.addItem("The Great Gatsby");
+        bookLibrary.addItem("1984");
+        bookLibrary.addItem("To Kill a Mockingbird");
+
+        System.out.println("Found: " + bookLibrary.findItemByName("The Great Gatsby"));
+        bookLibrary.removeitem("The Great Gatsby");
+        bookLibrary.displayItems();
+
     }
 
     //Type Wildcards
     //Modify the printBox method to use wildcards (?) and
     // make it capable of handling a Box containing any subtype of a specific superclass (e.g., any subtype of Number for NumberBox).
-    public void printBox(Box<? extends Number> box) {
+    public static void printBox(Box<? extends Number> box) {
         System.out.println("Box contains a Number or subclass: " + box.get());
     }
 }
